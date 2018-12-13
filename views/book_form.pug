@@ -19,6 +19,9 @@ block content
       label(for='summary') Summary:
       input#summary.form-control(type='textarea', placeholder='Summary' name='summary' value=(undefined===book ? '' : book.summary) required='true')
     div.form-group
+      label(for='readingLevel') Reading level:
+      input#isbn.form-control(type='text', placeholder='7' name='readingLevel' value=(undefined===book ? '' : book.readingLevel) required='true') 
+    div.form-group
       label(for='isbn') ISBN:
       input#isbn.form-control(type='text', placeholder='ISBN13' name='isbn' value=(undefined===book ? '' : book.isbn) required='true') 
     div.form-group

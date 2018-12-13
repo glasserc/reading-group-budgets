@@ -126,6 +126,7 @@ exports.book_create_post = [
           { title: req.body.title,
             author: req.body.author,
             summary: req.body.summary,
+            readingLevel: req.body.readingLevel,
             isbn: req.body.isbn,
             genre: req.body.genre
            });
@@ -295,6 +296,7 @@ exports.book_update_post = [
           { title: req.body.title,
             author: req.body.author,
             summary: req.body.summary,
+            readingLevel: req.body.readingLevel,
             isbn: req.body.isbn,
             genre: (typeof req.body.genre==='undefined') ? [] : req.body.genre,
             _id:req.params.id // This is required, or a new ID will be assigned!
