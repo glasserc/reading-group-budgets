@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method='POST' action='')
+    div.form-group
+      label(for='name') Budget Name:
+      input#budget_name.form-control(type='text', placeholder='Such as: New Building Budget' name='name' required='true' value=(undefined===budget ? '' : budget.name) )
+    div.form-group
+      label(for='income') Income:
+      input#income.form-control(type='number', name='income' required='true' value=(undefined===budget ? '' : budget.income) )
+    div.form-group
+      label(for='expenses') Expenses:
+      input#expenses.form-control(type='number', name='expenses' required='true' value=(undefined===budget ? '' : budget.expenses) )
+    button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul
+      for error in errors
+        li!= error.msg

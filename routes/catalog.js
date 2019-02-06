@@ -7,6 +7,8 @@ var book_controller = require('../controllers/bookController');
 var author_controller = require('../controllers/authorController');
 var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
+//add after you get it working
+var budget_controller = require('../controllers/budgetController');
 
 
 /// BOOK ROUTES ///
@@ -16,6 +18,27 @@ router.get('/', book_controller.index);
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
 router.get('/book/create', book_controller.book_create_get);
+
+/// Budget Routes ///
+
+// **** GET request for creating a Budget. NOTE This must come before routes that display budget (uses id).
+router.get('/budget/create', budget_controller.budget_form);
+/*this also works
+function(req, res) {
+    res.render('budget_form', { title: 'Create Budget'});
+})
+*/
+
+// **** POST request for creating Budget.
+router.post('/budget/create', budget_controller.budget_create_post);
+
+// GET request for one Author.
+router.get('/budget/:id', budget_controller.budget_detail);
+
+// GET request for list of all Budgets.
+router.get('/budgets', budget_controller.budget_list);
+
+//End Budget Routes
 
 // POST request for creating Book.
 router.post('/book/create', book_controller.book_create_post);
