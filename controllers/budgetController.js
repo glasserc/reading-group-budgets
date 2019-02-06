@@ -57,4 +57,4 @@ exports.budget_create_post = [
             res.redirect(budget.url);
         });
     }
-] 
+]

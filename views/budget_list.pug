@@ -2,14 +2,14 @@ extends layout
 
 block content
   h1= title
-  
+
   ul
   each budget in budget_list
     - var total = budget.income - budget.expenses
-    li 
-      a(href=budget.url) #{budget.name} 
+    li
+      a(href=budget.url) #{budget.name}
       p Total Funds Available: #{total}
-      
+
 
   else
     li There are no budgets.
