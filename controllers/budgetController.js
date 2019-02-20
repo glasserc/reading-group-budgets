@@ -57,4 +57,46 @@ exports.budget_create_post = [
             res.redirect(budget.url);
         });
     }
+];
+
+// Handles updating of budget
+exports.budget_update_get = function(req, res, next){
+  async.parallel({
+    budget: function(callback){
+      Budget.findById(req.params.id).exec(callback);
+    }
+  }, function(err, results){
+    if (err){ return next(err); }
+    if (results.budget == null){
+      var err = new Error('Budget not found');
+      err.status = 404;
+      return next(err);
+    }
+    console.log(JSON.stringify(results));
+    res.render('budget_form', {title: 'Update Budget', budget: results.budget});
+  });
+};
+
+exports.budget_update_post = [
+
+(req, res, next)=>{
+  // GET:
+  // https://www.youtube.com/watch?v=BIz02qY5BRA
+  // POST:
+  // name=Some+name&income=1000&expenses=123
+  var budget = new Budget({
+    name: req.body.name,
+    income: req.body.income,
+    expenses: req.body.expenses,
+    _id: req.params.id
+  });
+
+  Budget.findByIdAndUpdate(req.params.id, budget, {}, function(err, theBudget){
+    if (err){
+      return next(err);
+    }
+    res.redirect(budget.url);
+  });
+}
+
 ]
