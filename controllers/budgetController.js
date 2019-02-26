@@ -72,7 +72,6 @@ exports.budget_update_get = function(req, res, next){
       err.status = 404;
       return next(err);
     }
-    console.log(JSON.stringify(results));
     res.render('budget_form', {title: 'Update Budget', budget: results.budget});
   });
 };
