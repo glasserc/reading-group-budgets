@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 // Require our controllers.
-var book_controller = require('../controllers/bookController'); 
+var book_controller = require('../controllers/bookController');
 var author_controller = require('../controllers/authorController');
 var genre_controller = require('../controllers/genreController');
 var book_instance_controller = require('../controllers/bookinstanceController');
@@ -14,7 +14,7 @@ var budget_controller = require('../controllers/budgetController');
 /// BOOK ROUTES ///
 
 // GET catalog home page.
-router.get('/', book_controller.index);  
+router.get('/', book_controller.index);
 
 // GET request for creating a Book. NOTE This must come before routes that display Book (uses id).
 router.get('/book/create', book_controller.book_create_get);
@@ -38,7 +38,13 @@ router.get('/budget/:id', budget_controller.budget_detail);
 // GET request for list of all Budgets.
 router.get('/budgets', budget_controller.budget_list);
 
+// GET request to update Budget
+router.get('/budget/:id/update', budget_controller.budget_update_get);
+
+// POST request to update Budget
+router.post('/budget/:id/update', budget_controller.budget_update_post);
 //End Budget Routes
+
 
 // POST request for creating Book.
 router.post('/book/create', book_controller.book_create_post);
